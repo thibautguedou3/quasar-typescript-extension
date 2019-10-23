@@ -19,7 +19,9 @@ module.exports = async api => {
 		devDependencies
 	});
 
-	api.render('./templates/shim');
+	api.render('./templates/shim', {
+		prompts: api.prompts
+	});
 
 	api.extendJsonFile('tsconfig.json', {
 		compilerOptions: {

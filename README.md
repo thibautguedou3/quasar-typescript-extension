@@ -1,32 +1,62 @@
-Quasar App Extension Title <- change name
-===
+# Quasar typescript extension
 
-_Be sure to change this readme as appropriate for your app extension._
-
-_Think about the organization of this file and how the information will be beneficial to the user._
-
-> Add a short description of your App Extension. What does it do? How is it beneficial? Why would someone want to use it?
+This extension adds typescript support to a quasar project with minimum configuration
 
 # Install
+
+- Add extension to your dependencies:
+
 ```bash
-quasar ext add my-ext <- change name
+npm install -D git+ssh://github.com:thibautguedou3/quasar-typescript-extension.git
 ```
-Quasar CLI will retrieve it from NPM and install the extension.
 
-## Prompts
+- Then invoke the extension in your quasar project:
 
-> If your app extension uses prompts, explain them here, otherwise remove this section.
+```bash
+quasar ext invoke cood-typescript-ext
+```
+
+# Use
+
+- Add `lang="ts"` to the script tag in a `.vue` file and change the export default:
+
+```ts
+<script lang="ts">
+import Vue from "vue";
+
+interface IData {
+  message: string;
+}
+
+export default Vue.extend({
+  name: "PageIndex",
+  data(): IData {
+    return {
+      message: "Hello"
+    };
+  }
+});
+</script>
+```
+
+- Then run:
+
+```bash
+quasar dev
+```
+
+- It should compile with no error
 
 # Uninstall
+
 ```bash
-quasar ext remove my-ext <- change name
+quasar ext remove cood-typescript-ext
 ```
 
 # Info
-> Add longer information here that will help the user of your app extension.
 
-# Other Info
-> Add other information that's not as important to know
+The typescript errors in `.vue` files will only appear in vetur and during the webpack compilation. You will not see them when running the `tsc` command
 
 # Donate
+
 If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
